@@ -1,22 +1,22 @@
 //write your code here to make the tests pass
 
-var Document = function (employeeName) {
+let Document = function (employeeName) {
     this.employeeName = employeeName;
 };
 
 
-var Employee = function (name) {
+let Employee = function (name) {
     this.name = name;
 };
 Employee.prototype.work = function (office) {
-    for (var i=0; i<10;i++) {
+    for (let i=0; i<10;i++) {
         office.documents.push(new Document(this.name));
     }
 };
 
 
 
-var Manager = function (name) {
+let Manager = function (name) {
     this.name = name;
     this.employees = [];
 };
@@ -24,18 +24,18 @@ Manager.prototype.hireEmployee = function (name) {
     this.employees.push(new Employee(name));
 };
 Manager.prototype.askEmployeesToWork = function (office) {
-    for (var i=0; i<this.employees.length; i++) {
+    for (let i=0; i<this.employees.length; i++) {
         this.employees[i].work(office);
     }
 };
 
-var Cleaner = function (name) {
+let Cleaner = function (name) {
     Employee.call(this, name);
 };
 Cleaner.prototype = Object.create(Employee.prototype);
 Cleaner.prototype.clean = function () { console.log("Clean")};
 
-var Office = function() {
+let Office = function() {
     this.documents = [];
     this.managers = [];
     this.cleaners = [];
@@ -48,11 +48,11 @@ Office.prototype.hireManager = function (name) {
 };
 
 Office.prototype.startWorkDay = function () {
-    for (var i=0; i<this.managers.length; i++) {
+    for (let i=0; i<this.managers.length; i++) {
         this.managers[i].askEmployeesToWork(this);
     }
 
-    for(var i=0; i<this.cleaners.length; i++) {
+    for(let i=0; i<this.cleaners.length; i++) {
         this.cleaners[i].clean();
     }
 };
